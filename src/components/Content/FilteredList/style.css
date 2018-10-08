@@ -1,0 +1,10 @@
+.searchPanel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.FilteredList {
+    display: grid;
+    grid-template-rows: minmax(40px, 1fr) 5fr;
+    grid-row-gap: 24px;
+}

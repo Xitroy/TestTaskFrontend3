@@ -1,0 +1,25 @@
+.searchInput {
+    /*font-size: 18px;*/
+    padding: 10px 10px 10px 5px;
+    width: 200px;
+    border: none;
+    border-bottom: 1px solid #757575;
+}
+
+.searchInput:focus {
+    outline: none;
+}
+
+/* active state */
+.searchInput:focus {
+    animation: inputHighlighter 0.75s ease;
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #c8c8fa;
+    }
+    to 	{
+        background:transparent;
+    }
+}
