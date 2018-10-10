@@ -1,59 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './style.css';
+import Card from "./Card";
 
 //ToDo Вынести карточку в отдельный компонент
 class ResponsiveList extends React.Component {
-  editOnClickHandler(e){
+  editOnClickHandler(e) {
 
   }
 
-  removeOnClickHandler(e){
+  removeOnClickHandler(e) {
 
   }
 
   showResponsible(yn) {
     // console.log(this.props.itemList);
-    if (yn === true) {
-      return (
-        <div className={"ResponsiveList"}>
-          {this.props.itemList.map((item, index) => {
-            return (
-              <div key={"responsiveListItem" + index} className={"listItem"}>
-                <div className={"listItemValue"}><span className={"titleValue"}>Value: </span><span>{item.value}</span>
-                </div>
-                <div className={"listItemLabel"}><span className={"titleLabel"}>Label: </span><span>{item.label}</span>
-                </div>
-                <div className="buttonsPanel">
-                  <button className="customButton removeButton">Remove</button>
-                  <button className="customButton editButton">Edit</button>
-                </div>
-              </div>)
-          })}
-        </div>
-
-      )
-    }
-    else {
-      return (
-        <div className={"justList"}>
-          <div className={"titleList"}>Сomplete list of elements</div>
-          {this.props.itemList.map((item, index) => {
-            return (
-              <div key={"justResponsiveListItem" + index} className={"listItem"}>
-                <div className={"listItemValue"}><span className={"titleValue"}>Value: </span><span>{item.value}</span>
-                </div>
-                <div className={"listItemLabel"}><span className={"titleLabel"}>Label: </span><span>{item.label}</span>
-                </div>
-                <div className="buttonsPanel">
-                  <button className="customButton removeButton">Remove</button>
-                  <button className="customButton editButton">Edit</button>
-                </div>
-              </div>)
-          })}
-        </div>
-      )
-    }
+    return (
+      <div className={yn ? "ResponsiveList" : "justList"}>
+        {yn ? "" : <div className={"titleList"}>Сomplete list of elements</div>}
+        {this.props.itemList.map((item, index) => {
+          return (
+            <Card keyindex={index} value={item.value} label={item.label}/>
+          )
+        })}
+      </div>
+    )
   }
 
   render() {

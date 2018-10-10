@@ -29,8 +29,17 @@ class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dbSimulator: DbCreator.makeItems(10)
+      dbSimulator: DbCreator.makeItems(10),
+      sortedBy : "", // field name: "label" | "value"
+      sortDirection: "" // "empty" | "descending" | "ascending"
     }
+  }
+
+  cardsSort(){
+    let a = DbCreator.makeItems(10);
+    let sorted = Object.keys(a)
+      .sort(function(a,b) { return +b - +a })
+      .map(function(k) { return a[k] });
   }
 
   render() {
