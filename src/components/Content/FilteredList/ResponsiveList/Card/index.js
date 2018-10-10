@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ResponsiveList from "../index";
 
 class Card extends React.Component {
   render() {
     return (
-      <div key={"responsiveListItem" + this.props.keyIndex} className={"listItem"}>
+      <div className={"listItem"}>
         <div className={"listItemValue"}><span className={"titleValue"}>Value: </span><span
           className={"cardValue"}>{this.props.value}</span>
         </div>
@@ -25,10 +24,8 @@ class Card extends React.Component {
 Card.propTypes = {
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  keyIndex: PropTypes.string.isRequired,
-  onEditSaveHandler:PropTypes.func.isRequired,
-  onEditHandler:PropTypes.func.isRequired,
-  onDeleteHandler:PropTypes.func.isRequired,
+  // onEditHandler:PropTypes.func.isRequired,
+  // onDeleteHandler:PropTypes.func.isRequired,
 };
 
 export default Card;
