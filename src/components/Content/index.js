@@ -19,7 +19,7 @@ class DbCreator {
   static makeItems(N) {
     let res = [];
     for (let i = 0; i < N; i++) {
-      res.push({label: i, value: createRandomString(7)})
+      res.push({uniqId: i, label: i+(createRandomString(3)), value: createRandomString(7)})
     }
     return res;
   }
@@ -31,7 +31,7 @@ class Content extends React.Component {
     this.state = {
       dbSimulator: DbCreator.makeItems(10),
       sortedBy : "", // field name: "label" | "value"
-      sortDirection: "" // "empty" | "descending" | "ascending"
+      sortDirection: "", // "empty" | "descending" | "ascending"
     }
   }
 

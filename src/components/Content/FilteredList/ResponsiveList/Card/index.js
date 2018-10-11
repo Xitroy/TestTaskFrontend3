@@ -6,10 +6,10 @@ class Card extends React.Component {
     return (
       <div className={"listItem"}>
         <div className={"listItemValue"}><span className={"titleValue"}>Value: </span><span
-          className={"cardValue"}>{this.props.value}</span>
+          className={"cardValue"}>{this.props.itemData.value}</span>
         </div>
         <div className={"listItemLabel"}><span className={"titleLabel"}>Label: </span><span
-          className={"cardLabel"}>{this.props.label}</span>
+          className={"cardLabel"}>{this.props.itemData.label}</span>
         </div>
         <div className="buttonsPanel">
           <button className="customButton removeButton">Remove</button>
@@ -22,8 +22,9 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-  value: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  itemData: PropTypes.object.isRequired
+  // value: PropTypes.string.isRequired,
+  // label: PropTypes.string.isRequired,
   // onEditHandler:PropTypes.func.isRequired,
   // onDeleteHandler:PropTypes.func.isRequired,
 };

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styles from './style.css';
 import Card from "./Card";
 
-//ToDo Вынести карточку в отдельный компонент
 class ResponsiveList extends React.Component {
   showResponsible(yn) {
     // console.log(this.props.itemList);
@@ -12,7 +11,9 @@ class ResponsiveList extends React.Component {
         {yn ? "" : <div className={"titleList"}>Сomplete list of elements</div>}
         {this.props.itemList.map((item, index) => {
           return (
-            <Card key={"responsiveListItem" + index} value={item.value} label={item.label.toString()}/>
+            <Card key={"responsiveListItem" + index} itemData = {item}
+                  // value={item.value} label={item.label.toString()}
+            />
           )
         })}
       </div>
