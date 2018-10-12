@@ -2,6 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 
 class Card extends React.Component {
+  createHandler = function(label, value){
+    let itemToCreate = {label: label, value:value};
+    return function () {
+      this.props.CRUD.create(itemToCreate);
+    }
+  };
+
+  editHandler = this.props.CRUD.update;
+  deleteHandler = this.props.CRUD.delete;
+
   render() {
     return (
       <div className={"listItem"}>
@@ -12,8 +22,9 @@ class Card extends React.Component {
           className={"cardLabel"}>{this.props.itemData.label}</span>
         </div>
         <div className="buttonsPanel">
-          <button className="customButton removeButton">Remove</button>
-          <button className="customButton editButton">Edit</button>
+          <button className="customButton deleteButton">Delete</button>
+          <button className="customButton editButton"
+                  onClick={this.createHandler(this.props.itemData.label, this.props.itemData.value).bind(this)}>Edit</button>
           <button className="customButton saveButton" style={{display:"none"}}>Save</button>
         </div>
       </div>
@@ -22,11 +33,10 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
-  itemData: PropTypes.object.isRequired
+  itemData: PropTypes.object.isRequired,
+  CRUD : PropTypes.object.isRequired
   // value: PropTypes.string.isRequired,
   // label: PropTypes.string.isRequired,
-  // onEditHandler:PropTypes.func.isRequired,
-  // onDeleteHandler:PropTypes.func.isRequired,
 };
 
 export default Card;

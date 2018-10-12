@@ -28,28 +28,52 @@ class DbCreator {
 class Content extends React.Component {
   constructor(props) {
     super(props);
+    let dbSize = 10;
     this.state = {
-      dbSimulator: DbCreator.makeItems(10),
+      dbSimulator: DbCreator.makeItems(dbSize),
+      lastId : dbSize,
       sortedBy : "", // field name: "label" | "value"
       sortDirection: "", // "empty" | "descending" | "ascending"
+      CRUD : {
+        create : this.createOne.bind(this),
+        update : this.updateOne.bind(this),
+        delete : this.deleteOne.bind(this)
+      }
     }
   }
 
-  cardsSort(){
-    let a = DbCreator.makeItems(10);
-    let sorted = Object.keys(a)
-      .sort(function(a,b) { return +b - +a })
-      .map(function(k) { return a[k] });
-  }
+  //newItem = {label: string, value: string}
+  createOne(newItem){
+    let newDb = Object.assign(this.state.dbSimulator);
+    newItem.uniqId = this.state.lastId;
+    newDb.push(newItem);
+    this.setState((prevState)=>{
+      return {
+        lastId : prevState.lastId + 1,
+        dbSimulator: newDb
+      }
+    });
+    console.log(this.state.sortedBy.concat("Created"));
+    console.log(this.state.sortedBy.concat("New item:".concat(JSON.stringify(this.state.dbSimulator[this.state.lastId-1]))));
+  };
+
+  updateOne(){
+    console.log(this.state.sortedBy.concat("Updated"))
+
+  };
+
+  deleteOne(){
+    console.log(this.state.sortedBy.concat("Deleted"))
+  };
 
   render() {
     return (
       <div className={"contentMain"}>
         <div className="dbItems">
-          <ResponsiveList itemList={this.state.dbSimulator}/>
+          <ResponsiveList itemList={this.state.dbSimulator} CRUD = {this.state.CRUD}/>
         </div>
         <div className="filteredItems">
-          <FilteredList itemList={this.state.dbSimulator}/>
+          <FilteredList itemList={this.state.dbSimulator} CRUD = {this.state.CRUD}/>
         </div>
       </div>
     )

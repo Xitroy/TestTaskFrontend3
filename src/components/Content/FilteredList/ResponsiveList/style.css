@@ -48,7 +48,7 @@
     /*justify-self: center;*/
 }
 
-.removeButton:hover {
+.deleteButton:hover {
     background: rgb(230, 74, 25);
     color: #fff; /* цвет текста */
 }
@@ -60,7 +60,7 @@
 }
 
 /* при наведении курсора мышки */
-.removeButton:active {
+.deleteButton:active {
     background: rgb(2, 136, 209);
     color: #fff; /* цвет текста */
 }

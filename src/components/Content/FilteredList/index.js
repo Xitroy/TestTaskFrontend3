@@ -47,7 +47,7 @@ class FilteredList extends React.Component {
           <SearchInput searchBy="value" onChangeHandler={this.searchOnchangeHandler.bind(this)}/>
           <SearchInput searchBy="label" onChangeHandler={this.searchOnchangeHandler.bind(this)}/>
         </div>
-        <ResponsiveList itemList={this.filterItemsByProperty(searchBy)} isResponsible={true}/>
+        <ResponsiveList itemList={this.filterItemsByProperty(searchBy)} isResponsible={true}  CRUD={this.props.CRUD}/>
       </div>
     )
   }
@@ -55,6 +55,7 @@ class FilteredList extends React.Component {
 
 FilteredList.propTypes = {
   itemList: PropTypes.array.isRequired,
+  CRUD : PropTypes.object.isRequired
 };
 
 export default FilteredList;
