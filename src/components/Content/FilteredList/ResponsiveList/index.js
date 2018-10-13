@@ -11,7 +11,7 @@ class ResponsiveList extends React.Component {
         {yn ? "" : <div className={"titleList"}>Сomplete list of elements</div>}
         {this.props.itemList.map((item, index) => {
           return (
-            <Card key={"responsiveListItem" + index} itemData = {item}  CRUD={this.props.CRUD}/>
+            <Card key={"responsiveListItem" + index} itemData = {item}  deleteElement={this.props.CRUD.delete} updateElement={this.props.CRUD.update}/>
           )
         })}
       </div>

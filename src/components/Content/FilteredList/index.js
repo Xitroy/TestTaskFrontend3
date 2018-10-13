@@ -44,6 +44,7 @@ class FilteredList extends React.Component {
     return (
       <div className={"FilteredList"} >
         <div className={"searchPanel"}>
+          <div className={"filterBy"}>Filter by: </div>
           <SearchInput searchBy="value" onChangeHandler={this.searchOnchangeHandler.bind(this)}/>
           <SearchInput searchBy="label" onChangeHandler={this.searchOnchangeHandler.bind(this)}/>
         </div>

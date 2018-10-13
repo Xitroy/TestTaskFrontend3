@@ -1,0 +1,16 @@
+/* Style Select Field */
+select {
+    font-family: inherit;
+    background-color: transparent;
+    padding: 4px 0;
+    margin: 16px ;
+    font-size: 16px;
+    color: grey;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+/* Remove focus */
+select:focus {
+    outline: none
+}

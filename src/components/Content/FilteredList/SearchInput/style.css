@@ -4,6 +4,7 @@
     width: 200px;
     border: none;
     border-bottom: 1px solid #757575;
+    margin: 8px;
 }
 
 .searchInput:focus {
@@ -22,4 +23,8 @@
     to 	{
         background:transparent;
     }
+}
+
+.filterBy{
+    align-self: center;
 }

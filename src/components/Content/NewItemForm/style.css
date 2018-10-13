@@ -1,0 +1,38 @@
+.addInput {
+    /*font-size: 18px;*/
+    padding: 10px 10px 10px 5px;
+    width: 200px;
+    border: none;
+    border-bottom: 1px solid #757575;
+    margin: 8px 8px 16px;
+}
+
+.addInput:focus {
+    outline: none;
+    animation: addIinputHighlighter 0.75s ease;
+}
+
+@keyframes addInputHighlighter {
+    from {
+        background: #c8fac8;
+    }
+    to 	{
+        background:transparent;
+    }
+}
+
+.addButton{
+    color: #000; /* цвет текста */
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    background: rgb(200, 250, 200); /* фон кнопки */
+    padding: 2px 0.5em; /* отступ от текста */
+    opacity: 0.5;
+    border-radius: 5px;
+    /*justify-self: center;*/
+}
+
+.addButton:hover {
+    background: rgb(30, 230, 30);
+    color: #fff; /* цвет текста */
+}
