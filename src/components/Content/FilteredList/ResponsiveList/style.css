@@ -34,10 +34,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 4px;
-    padding:0 4px;
+    padding: 0 4px;
 }
 
 .customButton {
+    font-size: 16px;
     color: #000; /* цвет текста */
     text-decoration: none; /* убирать подчёркивание у ссылок */
     user-select: none; /* убирать выделение текста */
@@ -71,4 +72,44 @@
     color: #fff; /* цвет текста */
 }
 
+.saveButton:hover {
+    background: rgb(76, 175, 80);
+    color: #fff; /* цвет текста */
+}
+
 /* при нажатии */
+.saveButton:active {
+    background: #1976D2;
+    color: #fff; /* цвет текста */
+}
+
+.saveButton {
+    background-color: #388E3C;
+    color: #fff;
+}
+
+.cardValue[contenteditable="true"],
+.cardLabel[contenteditable="true"] {
+    color: red;
+    animation: makeUnderline 1s forwards;
+}
+
+.cardValue[contenteditable="false"],
+.cardLabel[contenteditable="false"] {
+    color: black;
+}
+
+@keyframes makeUnderline {
+    from {
+        border-bottom: 1px solid white;
+    }
+    30%{
+        border-bottom: 1px solid darkgray;
+    }
+    60%{
+        border-bottom: 1px solid grey;
+    }
+    to 	{
+        border-bottom: 1px solid black;
+    }
+}

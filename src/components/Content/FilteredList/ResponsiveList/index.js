@@ -5,13 +5,15 @@ import Card from "./Card";
 
 class ResponsiveList extends React.Component {
   showResponsible(yn) {
+    const uniqKeyGen = yn?"left":"right";
     // console.log(this.props.itemList);
     return (
       <div className={yn ? "ResponsiveList" : "justList"}>
         {yn ? "" : <div className={"titleList"}>Сomplete list of elements</div>}
         {this.props.itemList.map((item, index) => {
           return (
-            <Card key={"responsiveListItem" + index} itemData = {item}  deleteElement={this.props.CRUD.delete} updateElement={this.props.CRUD.update}/>
+            <Card key={"responsiveListItem" + index} itemData = {item}  uniqKey={uniqKeyGen}
+                  deleteElement={this.props.CRUD.delete} updateElement={this.props.CRUD.update}/>
           )
         })}
       </div>

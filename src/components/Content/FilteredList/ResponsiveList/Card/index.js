@@ -9,18 +9,20 @@ class Card extends React.Component {
     }
   }
 
-  saveHandler(){
-    // let itemToUpdate = {uniqId: uniqId, label: label, value: value};
-    // return function () {
-    //   this.props.updateElement(itemToUpdate);
-    // }
+  saveHandler() {
     const currentId = this.props.itemData.uniqId;
-    const currentValue = document.getElementById("cardValue".concat(currentId));
-    const currentLabel = document.getElementById("cardValue".concat(currentId));
-    currentValue.contentEditable = "false";
-    currentLabel.contentEditable = "false";
+    let cardFields = document.getElementsByClassName("".concat(this.props.itemData.uniqId).concat(this.props.uniqKey));
 
-    let itemToUpdate = {uniqId: currentId, value: currentValue.value, label: currentLabel.value};
+    //just believe me that order is the following
+    let currentValue = cardFields[0].innerHTML;
+    let currentLabel = cardFields[1].innerHTML;
+
+    Array.prototype.forEach.call(cardFields, function(el) {
+      el.contentEditable = "false"
+    });
+
+    let itemToUpdate = {uniqId: currentId, value: currentValue, label: currentLabel};
+
     this.props.updateElement(itemToUpdate);
     this.setState({
         isEditable: false
@@ -29,8 +31,12 @@ class Card extends React.Component {
   };
 
   editHandler() {
-    document.getElementById("cardValue".concat(this.props.itemData.uniqId)).contentEditable = "true";
-    document.getElementById("cardLabel".concat(this.props.itemData.uniqId)).contentEditable = "true";
+    let cardFields = document.getElementsByClassName("".concat(this.props.itemData.uniqId).concat(this.props.uniqKey));
+
+    Array.prototype.forEach.call(cardFields, function(el) {
+      el.contentEditable = "true"
+    });
+
     this.setState({
         isEditable: true
       }
@@ -46,17 +52,18 @@ class Card extends React.Component {
       <div className={"listItem"}>
         <div className={"listItemValue"}><span className={"titleValue"}>Value: </span>
           <span
-            className={"cardValue"}
-            id={"cardValue".concat(this.props.itemData.uniqId)}>{this.props.itemData.value}</span>
+            className={"cardValue ".concat(this.props.itemData.uniqId).concat(this.props.uniqKey)}>
+            {this.props.itemData.value}</span>
         </div>
         <div className={"listItemLabel"}><span className={"titleLabel"}>Label: </span>
           <span
-            className={"cardLabel"}
-            id={"cardLabel".concat(this.props.itemData.uniqId)}>{this.props.itemData.label}</span>
+            className={"cardLabel ".concat(this.props.itemData.uniqId).concat(this.props.uniqKey)}>
+            {this.props.itemData.label}</span>
         </div>
         <div className="buttonsPanel">
           <button className="customButton deleteButton"
-                  onClick={this.deleteHandler.bind(this)}>Delete</button>
+                  onClick={this.deleteHandler.bind(this)}>Delete
+          </button>
           {
             this.state.isEditable
               ? <button className="customButton saveButton"
@@ -74,6 +81,7 @@ Card.propTypes = {
   itemData: PropTypes.object.isRequired,
   updateElement: PropTypes.func.isRequired,
   deleteElement: PropTypes.func.isRequired,
+  uniqKey: PropTypes.string.isRequired
   // value: PropTypes.string.isRequired,
   // label: PropTypes.string.isRequired,
 };

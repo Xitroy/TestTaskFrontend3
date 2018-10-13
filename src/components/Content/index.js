@@ -62,8 +62,19 @@ class Content extends React.Component {
   // inside item we have uniqId which will help us to update target guy
   // itemToUpdate = {uniqId: id, label: string, value: string}
   updateOne(itemToUpdate) {
-    console.log(this.state.sortedBy.concat("Updated".concat(itemToUpdate.uniqId)));
-
+    let newDb = Object.assign(this.state.dbSimulator);
+    let indexToUpdate;
+    this.state.dbSimulator.find(function (item, index) {
+      indexToUpdate = index;
+      return item.uniqId === itemToUpdate.uniqId;
+    });
+    if (indexToUpdate !== undefined) {
+      newDb[indexToUpdate]=itemToUpdate;
+    }
+    console.log(itemToUpdate);
+    this.setState({
+      dbSimulator: newDb
+    });
   };
 
   deleteOne(uniqId) {
